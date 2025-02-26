@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Interactive Image Gallery</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <button id="toggleMode">Toggle Light/Dark Mode</button>
+    <div class="gallery">
+        <!-- Thumbnail Images -->
+        <div class="thumbnails">
+            <img src="https://tinyurl.com/yftrm4bz" alt="Majestic Lion in the Savanna" class="thumb active">
+            <img src="images/tiger.jpg" alt="Tiger prowling through the jungle" class="thumb">
+            <img src="images/elephant.jpg" alt="Elephant roaming the African plains" class="thumb">
+            <img src="images/giraffe.jpg" alt="Giraffe reaching for the tallest branches" class="thumb">
+            <img src="images/zebra.jpg" alt="Zebra with striking black and white stripes" class="thumb">
+            <img src="images/panda.jpg" alt="Panda enjoying bamboo in a serene forest" class="thumb">
+        </div>
+        <!-- Main Display Area -->
+        <div class="main-display">
+            <img id="mainImage" src="https://tinyurl.com/bddh2uvd" alt="Majestic Lion in the Savanna">
+            <p id="caption">Majestic Lion in the Savanna</p>
+        </div>
+    </div>
+</body>
+</html>
