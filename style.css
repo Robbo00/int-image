@@ -31,7 +31,7 @@ button {
     gap: 10px;
 }
 
-.thumb {
+.picso {
     width: 100px;
     height: 100px;
     cursor: pointer;
@@ -39,7 +39,7 @@ button {
     transition: transform 0.2s, border-color 0.2s;
 }
 
-.thumb:hover, .thumb.active {
+.picso:hover, .picso.active {
     transform: scale(1.1);
     border-color: #007bff;
 }

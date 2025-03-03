@@ -12,18 +12,77 @@
     <div class="gallery">
         <!-- Thumbnail Images -->
         <div class="thumbnails">
-            <img src="https://tinyurl.com/yftrm4bz" alt="Majestic Lion in the Savanna" class="thumb active">
-            <img src="images/tiger.jpg" alt="Tiger prowling through the jungle" class="thumb">
-            <img src="images/elephant.jpg" alt="Elephant roaming the African plains" class="thumb">
-            <img src="images/giraffe.jpg" alt="Giraffe reaching for the tallest branches" class="thumb">
-            <img src="images/zebra.jpg" alt="Zebra with striking black and white stripes" class="thumb">
-            <img src="images/panda.jpg" alt="Panda enjoying bamboo in a serene forest" class="thumb">
+            <img src="https://tinyurl.com/yftrm4bz" alt="Majestic Lion in the Savanna" class="picso active">
+            <img src="https://tinyurl.com/dvuxjdfa" alt="Tiger prowling through the jungle" class="picso">
+            <img src="https://tinyurl.com/48w2c8f7" alt="Elephant roaming the African plains" class="picso">
+            <img src="https://tinyurl.com/3n4382k6" alt="Giraffe reaching for the tallest branches" class="picso">
+            <img src="https://tinyurl.com/4p8yycbh" alt="Zebra with striking black and white stripes" class="picso">
+            <img src="https://tinyurl.com/49s3pv6c" alt="Panda enjoying bamboo in a serene forest" class="picso">
         </div>
         <!-- Main Display Area -->
         <div class="main-display">
-            <img id="mainImage" src="https://tinyurl.com/bddh2uvd" alt="Majestic Lion in the Savanna">
+            <img id="mainImage" src="https://tinyurl.com/yftrm4bz" alt="Majestic Lion in the Savanna">
             <p id="caption">Majestic Lion in the Savanna</p>
         </div>
     </div>
 </body>
+<script>
+    $(document).ready(function() {
+    // Load saved theme
+    if (localStorage.getItem("theme") === "dark") {
+        $("body").addClass("dark-mode");
+    }
+
+    // Toggle light/dark mode
+    $("#toggleMode").click(function() {
+        $("body").toggleClass("dark-mode");
+
+        // Save mode to localStorage
+        if ($("body").hasClass("dark-mode")) {
+            localStorage.setItem("theme", "dark");
+        } else {
+            localStorage.setItem("theme", "light");
+        }
+    });
+
+    // Image gallery functionality
+    $(".picso").click(function() {
+        updateMainImage($(this));
+    });
+
+    function updateMainImage(pico) {
+        let newy = pico.attr("src");
+        let newo = pico.attr("alt");
+
+        // Fade out and change the image
+        $("#mainImage").fadeOut(200, function() {
+            $("#mainImage").attr("src", newy).fadeIn(200);
+        });
+
+        // Update caption
+        $("#caption").text(newo);
+
+        // Highlight active thumbnail
+        $(".picso").removeClass("active");
+        pico.addClass("active");
+    }
+
+    // Keyboard navigation (Only Left & Right Arrow Keys)
+    $(document).keydown(function(e) {
+        let activeIndex = $(".picso.active").index();
+        let totalImages = $(".picso").length;
+
+        if (e.keyCode === 37) { // Left Arrow Key
+            let prevIndex = (activeIndex - 1 + totalImages) % totalImages;
+            updateMainImage($(".picso").eq(prevIndex));
+        }
+
+        if (e.keyCode === 39) { // Right Arrow Key
+            let nextIndex = (activeIndex + 1) % totalImages;
+            updateMainImage($(".picso").eq(nextIndex));
+        }
+    });
+});
+
+</script>
 </html>
